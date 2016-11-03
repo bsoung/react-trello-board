@@ -1,5 +1,6 @@
-const React = require('react')
+import React from 'react'
 
+// TODO: change to AddForm
 const AddCardForm = React.createClass({
 	onSubmit (e) {
 		e.preventDefault()
@@ -9,6 +10,7 @@ const AddCardForm = React.createClass({
 		}
 
 		this.props.onAddSubmit(this.refs.textInput.value)
+		this.refs.textInput.value = ''
 	},
 	render () {
 		return (

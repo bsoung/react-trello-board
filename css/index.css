@@ -6,6 +6,11 @@
 	background-color: #009688;
 }
 
+a {
+	background-color: lightgray !important;
+	color: #212121;
+}
+
 .card {
 	width: 150px;
     text-align: center;
@@ -13,6 +18,18 @@
     padding: 10px;
     margin: 10px;
     background-color: white;
+}
+
+.add-form {
+	background-color: lightgray !important;
+	border-radius: 5px; 
+}
+
+.list-creator-title {
+	font-family: 'Open Sans', sans-serif;
+	color: #4d4d4d;
+	font-size: 20px;
+	background-color: lightgray;
 }
 
 .board {

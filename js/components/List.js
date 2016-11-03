@@ -1,14 +1,26 @@
-const React = require('react')
-const Card = require('./Card')
-const AddCardForm = require('./AddCardForm')
+import React from 'react'
+import Card from './Card'
+import AddCardForm from './AddCardForm'
 
 const List = (props) => (
-	//console.log("IN LIST", JSON.stringify(props))||
 	<div className='card-list'>
+		<a
+			href='#' 
+			style={{float: 'right'}} 
+			onClick={(e) => {
+				e.preventDefault()
+				props.onDeleteList()
+			}}
+		>
+			x
+		</a>
+
 		<h3 className='list-title'>{props.title}</h3>
-		{props.cards.map((card, index) => <Card key={index} text={card} /> )}
+		{props.cards.map((card, index) => <Card key={index} 
+			card={card} 
+			onDeleteCard={props.onDeleteCard} /> )}
 		<AddCardForm onAddSubmit={props.onAddSubmit} />
 	</div>	
 )
-//Objects are not valid as a React child
+
 module.exports = List

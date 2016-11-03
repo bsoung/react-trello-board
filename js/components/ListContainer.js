@@ -1,46 +1,62 @@
-const React = require('react')
-const Board = require('./board')//
+import React from 'react'
+import Board from './board'
+import _ from 'lodash'
 
 const ListContainer = React.createClass({
 	getInitialState () {
 		return {
 			title: 'everyday thoughts',
 			lists: [
-				{
-					title: 'head bangers',
-					cards: ['syntax errors', 'documentation', 'trello boards']
-				},
-				{
-					title: 'programming funnies',
-					cards: ['commitlogsfromlastnight.com', 'httpcats.com', 'http://imgur.com/fuDDhdL']
-				},
-				{
-					title: 'perks of programming',
-					cards: ['free pizza at meetups', 'working in pjs', 'all the foods']
-				},
-				{
-					title: 'foreign languages',
-					cards: ['python', 'cobol', 'DeScribe Macro Language']
-				}
+
 			]
 		}
 	},
 
-	onAddSubmit (index, text) {
-		let lists = this.state.lists.concat()    
+	onDeleteCard (index, card) {
+		let lists = _.cloneDeep(this.state.lists)
+		lists[index].cards = lists[index].cards.filter(c => c.name !== card.name)
+		this.setState({
+			lists: lists
+		})
+	},
 
-		lists[index] = {
-			title: lists[index].title,
-			cards: lists[index].cards.concat(text)
-		}
+	onDeleteList (index) {
+		let lists = _.cloneDeep(this.state.lists)
+		console.log(lists[0].index, index)
+		lists = lists.filter(l => lists[index] !== l)
+		console.log("AFTER?", lists)
+		this.setState({
+			lists: lists
+		})
+	},
+
+	onAddSubmit (index, text) {
+		let lists = _.cloneDeep(this.state.lists)    // concat/slice shallow copy
+		lists[index].cards.push({name: text})
+		this.setState({
+			lists: lists
+		})
+	},
+
+	onAddList (title) {
+		let lists = _.cloneDeep(this.state.lists)
+		let newList = {title: title, cards: []}
+		lists.push(newList)
 		this.setState({
 			lists: lists
 		})
 	},
 
 	render () {
-		console.log(this.state)
-		return <Board title={this.state.title} lists={this.state.lists} onAddSubmit={this.onAddSubmit} />
+		return (
+			<Board title={this.state.title} 
+			lists={this.state.lists} 
+			onAddSubmit={this.onAddSubmit} 
+			onDeleteCard={this.onDeleteCard}
+			onAddList={this.onAddList}
+			onDeleteList={this.onDeleteList}
+			 />	
+		)
 	}
 })
 
