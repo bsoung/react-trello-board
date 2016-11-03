@@ -1,7 +1,7 @@
 import React from 'react'
 
 // TODO: change to AddForm
-const AddCardForm = React.createClass({
+const AddForm = React.createClass({
 	onSubmit (e) {
 		e.preventDefault()
 
@@ -24,4 +24,4 @@ const AddCardForm = React.createClass({
 	}
 })
 
-module.exports = AddCardForm
+module.exports = AddForm

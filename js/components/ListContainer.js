@@ -22,9 +22,7 @@ const ListContainer = React.createClass({
 
 	onDeleteList (index) {
 		let lists = _.cloneDeep(this.state.lists)
-		console.log(lists[0].index, index)
 		lists = lists.filter(l => lists[index] !== l)
-		console.log("AFTER?", lists)
 		this.setState({
 			lists: lists
 		})

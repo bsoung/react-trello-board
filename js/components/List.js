@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import AddCardForm from './AddCardForm'
+import AddForm from './AddCardForm'
 
 const List = (props) => (
 	<div className='card-list'>
@@ -19,7 +19,7 @@ const List = (props) => (
 		{props.cards.map((card, index) => <Card key={index} 
 			card={card} 
 			onDeleteCard={props.onDeleteCard} /> )}
-		<AddCardForm onAddSubmit={props.onAddSubmit} />
+		<AddForm onAddSubmit={props.onAddSubmit} />
 	</div>	
 )
 
