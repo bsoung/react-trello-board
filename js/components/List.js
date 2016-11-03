@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import AddForm from './AddCardForm'
+import AddForm from './AddForm'
 
 const List = (props) => (
 	<div className='card-list'>
